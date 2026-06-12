@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nimisha Singh — Content Writer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --cream: #f5f0e8;
+    --warm: #f9f5ef;
+    --gold: #c9a84c;
+    --rust: #b5451b;
+    --sage: #4a7c59;
+    --muted: #7a7065;
+    --card-bg: #ffffff;
+    --border: #e0d8cc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 80px 60px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.18), transparent 70%);
+    pointer-events: none;
+  }
+
+  header::after {
+    content: '"';
+    position: absolute;
+    bottom: -40px; right: 50px;
+    font-family: 'Playfair Display', serif;
+    font-size: 320px;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .header-inner { max-width: 900px; margin: 0 auto; position: relative; }
+
+  .badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 7vw, 80px);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -2px;
+    margin-bottom: 16px;
+  }
+
+  h1 span { color: var(--gold); font-style: italic; }
+
+  .tagline {
+    font-size: 16px;
+    color: rgba(245,240,232,0.65);
+    font-weight: 300;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .contact-row a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  .contact-row a:hover { opacity: 1; color: var(--gold); }
+
+  /* ── NAV PILLS ── */
+  .nav-strip {
+    background: var(--warm);
+    border-bottom: 1px solid var(--border);
+    padding: 0 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-strip::-webkit-scrollbar { display: none; }
+
+  .nav-strip a {
+    display: inline-block;
+    padding: 16px 22px;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-strip a:hover { color: var(--ink); border-color: var(--gold); }
+
+  /* ── MAIN LAYOUT ── */
+  main { max-width: 1000px; margin: 0 auto; padding: 60px 40px 100px; }
+
+  /* ── SECTION HEADING ── */
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+    margin-top: 72px;
+    padding-top: 20px;
+  }
+  .section-head:first-child { margin-top: 0; }
+
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--border);
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-left: 8px;
+  }
+
+  /* ── CARD GRID ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px 22px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--gold);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s ease;
+    border-radius: 10px 0 0 10px;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.09);
+    border-color: #c9a84c55;
+  }
+  .card:hover::before { transform: scaleY(1); }
+
+  .card-cat {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .card-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .card-meta::before { content: '↗'; font-size: 14px; }
+
+  /* Category accent colours */
+  .cat-travel   .card-cat { color: var(--sage); }
+  .cat-health   .card-cat { color: #c0392b; }
+  .cat-food     .card-cat { color: #d4870a; }
+  .cat-digital  .card-cat { color: #2471a3; }
+  .cat-fintech  .card-cat { color: var(--rust); }
+  .cat-web      .card-cat { color: #6c3483; }
+
+  .cat-travel::before   { background: var(--sage); }
+  .cat-health::before   { background: #c0392b; }
+  .cat-food::before     { background: #d4870a; }
+  .cat-digital::before  { background: #2471a3; }
+  .cat-fintech::before  { background: var(--rust); }
+  .cat-web::before      { background: #6c3483; }
+
+  /* ── FEATURED ROW (big cards) ── */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  @media(max-width:640px) {
+    .featured-grid { grid-template-columns: 1fr; }
+    header { padding: 50px 24px 40px; }
+    .nav-strip { padding: 0 16px; }
+    main { padding: 40px 18px 80px; }
+  }
+
+  .card-big {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 30px 26px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.22s, box-shadow 0.22s;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-big::after {
+    content: '↗';
+    position: absolute;
+    bottom: 20px; right: 22px;
+    font-size: 22px;
+    color: var(--gold);
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .card-big:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.18); }
+  .card-big:hover::after { opacity: 1; transform: translate(3px,-3px); }
+
+  .card-big .card-cat { color: var(--gold); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+  .card-big .card-title { font-family: 'Playfair Display', serif; font-size: 18px; line-height: 1.4; font-weight: 700; color: var(--cream); max-width: 85%; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .stat {
+    background: var(--card-bg);
+    padding: 22px 20px;
+    text-align: center;
+  }
+
+  .stat-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-l {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  @media(max-width:600px) {
+    .stats-bar { grid-template-columns: repeat(2,1fr); }
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    background: var(--warm);
+  }
+
+  footer a { color: var(--gold); text-decoration: none; }
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="badge">Content Portfolio</div>
+    <h1>Nimisha <span>Singh</span></h1>
+    <p class="tagline">Content writer crafting stories across travel, wellness, food, fintech, and digital marketing — words that rank, resonate, and convert.</p>
+    <div class="contact-row">
+      <a href="mailto:worknimisha9@gmail.com">✉ worknimisha9@gmail.com</a>
+      <a href="tel:+918787096525">📞 +91 878 709 6525</a>
+      <a>📍 Lucknow, UP</a>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav-strip">
+  <a href="#featured">Featured</a>
+  <a href="#food">Food & Sushi</a>
+  <a href="#travel">Travel & Yatra</a>
+  <a href="#health">Health</a>
+  <a href="#digital">Digital Marketing</a>
+  <a href="#fintech">Fintech</a>
+  <a href="#web">Web Content</a>
+</nav>
+
+<main>
+
+  <!-- STATS -->
+  <div class="stats-bar reveal">
+    <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Published Pieces</div></div>
+    <div class="stat"><div class="stat-n">8+</div><div class="stat-l">Niches Covered</div></div>
+    <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Clients Served</div></div>
+    <div class="stat"><div class="stat-n">SEO</div><div class="stat-l">Optimised Writing</div></div>
+  </div>
+
+  <!-- ── FEATURED ── -->
+  <section id="featured">
+    <div class="section-head reveal">
+      <h2>Featured Work</h2>
+      <span class="section-tag">Highlights</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="featured-grid reveal">
+      <a class="card-big" href="https://zeenews.india.com/consumer-connect/breaking-template-how-bizarexpedition-is-reinventing-chardham-yatra-and-travel-in-india-3035430.html" target="_blank" rel="noopener">
+        <span class="card-cat">Zee News · Travel</span>
+        <span class="card-title">How BizarExpedition is Reinventing Chardham Yatra &amp; Travel in India</span>
+      </a>
+      <a class="card-big" href="https://www.msn.com/en-us/news/other/beyond-the-itinerary-how-bizarexpedition-is-redefining-the-modern-indian-explorer%E2%80%99s-journey-/ar-AA1WGl45" target="_blank" rel="noopener">
+        <span class="card-cat">MSN News · Travel</span>
+        <span class="card-title">Beyond the Itinerary: How BizarExpedition is Redefining the Modern Indian Explorer's Journey</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOD & SUSHI ── -->
+  <section id="food">
+    <div class="section-head reveal">
+      <h2>Food &amp; Sushi</h2>
+      <span class="section-tag">Ikkan Sushi, London</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/dragon-roll-sushi-at-ikkan-sushi/" target="_blank" rel="noopener">
+        <span class="card-cat">Restaurant Blog</span>
+        <span class="card-title">Dragon Roll Sushi at Ikkan Sushi</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/buzz-around-teriyaki-salmon-in-elm-street/" target="_blank" rel="noopener">
+        <span class="card-cat">Restaurant Blog</span>
+        <span class="card-title">The Buzz Around Teriyaki Salmon in Elm Street</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/ikkan-sushi-rolls-for-beginners/" target="_blank" rel="noopener">
+        <span class="card-cat">Beginner's Guide</span>
+        <span class="card-title">Ikkan Sushi Rolls for Beginners</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/top-5-reasons-you-should-try-sushi-at-ikkan-sushi-in-marylebone/" target="_blank" rel="noopener">
+        <span class="card-cat">Listicle · SEO</span>
+        <span class="card-title">Top 5 Reasons to Try Sushi at Ikkan Sushi in Marylebone</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/ikkan-sushi-the-rare-gem-of-vegan-restaurant-in-covent-garden/" target="_blank" rel="noopener">
+        <span class="card-cat">Feature · Vegan</span>
+        <span class="card-title">Ikkan Sushi: The Rare Gem of Vegan Dining in Covent Garden</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/guide-to-exploring-the-best-sushi-restaurant-in-marylebone/" target="_blank" rel="noopener">
+        <span class="card-cat">Location Guide</span>
+        <span class="card-title">Guide to Exploring the Best Sushi Restaurant in Marylebone</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/try-ikkan-sushi-platters-in-covent-garden/" target="_blank" rel="noopener">
+        <span class="card-cat">Product Feature</span>
+        <span class="card-title">Try Ikkan Sushi Platters in Covent Garden</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/holidays-with-christmas-sushi-box-with-ikkan-sushi/" target="_blank" rel="noopener">
+        <span class="card-cat">Seasonal Content</span>
+        <span class="card-title">Holidays with Christmas Sushi Box at Ikkan Sushi</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/ikkan-sushi-teriyaki-bowl-in-marylebone/" target="_blank" rel="noopener">
+        <span class="card-cat">Menu Feature</span>
+        <span class="card-title">Ikkan Sushi Teriyaki Bowl in Marylebone</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/london-winters-with-hot-bowl-of-udon-noodles-teriyaki-salmon/" target="_blank" rel="noopener">
+        <span class="card-cat">Seasonal Content</span>
+        <span class="card-title">London Winters with a Hot Bowl of Udon Noodles &amp; Teriyaki Salmon</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/ikkan-sushi-katsu-curry-london-favorite/" target="_blank" rel="noopener">
+        <span class="card-cat">Product Feature</span>
+        <span class="card-title">Ikkan Sushi Katsu Curry — London's Favourite</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/why-is-london-shifting-towards-healthy-vegan-food/" target="_blank" rel="noopener">
+        <span class="card-cat">Trend Piece</span>
+        <span class="card-title">Why is London Shifting Towards Healthy Vegan Food?</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+      <a class="card cat-food reveal" href="https://ikkansushi.com/7-best-doughnuts-in-london-you-must-try-in-2025/" target="_blank" rel="noopener">
+        <span class="card-cat">City Guide · SEO</span>
+        <span class="card-title">7 Best Doughnuts in London You Must Try in 2025</span>
+        <span class="card-meta">ikkansushi.com</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── TRAVEL ── -->
+  <section id="travel">
+    <div class="section-head reveal">
+      <h2>Travel &amp; Spiritual Yatra</h2>
+      <span class="section-tag">BizarExpedition &amp; More</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <a class="card cat-travel reveal" href="https://www.appclonescript.com/secret-places-near-kedarnath-temple-you-shouldnt-miss/" target="_blank" rel="noopener">
+        <span class="card-cat">Travel Guide</span>
+        <span class="card-title">Secret Places Near Kedarnath Temple You Shouldn't Miss</span>
+        <span class="card-meta">appclonescript.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.travelaroundtheworldblog.com/trusted-travel-partner-parents-do-dham-yatra-rishikesh/" target="_blank" rel="noopener">
+        <span class="card-cat">Family Travel</span>
+        <span class="card-title">Trusted Travel Partner for Parents Doing Do Dham Yatra from Rishikesh</span>
+        <span class="card-meta">travelaroundtheworldblog.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.websitetrafficonline.com/do-dham-yatra-transport-options-helicopter-vs-road/" target="_blank" rel="noopener">
+        <span class="card-cat">Comparison Guide</span>
+        <span class="card-title">Do Dham Yatra Transport Options: Helicopter vs Road</span>
+        <span class="card-meta">websitetrafficonline.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.bizarexpedition.com/package/rishikesh-to-badrinath-tour-package" target="_blank" rel="noopener">
+        <span class="card-cat">Package Page</span>
+        <span class="card-title">Rishikesh to Badrinath Tour Package</span>
+        <span class="card-meta">bizarexpedition.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.bizarexpedition.com/package/badrinath-from-dehradun-tour-package" target="_blank" rel="noopener">
+        <span class="card-cat">Package Page</span>
+        <span class="card-title">Badrinath from Dehradun Tour Package</span>
+        <span class="card-meta">bizarexpedition.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.bizarexpedition.com/package/badrinath-from-delhi-tour-package" target="_blank" rel="noopener">
+        <span class="card-cat">Package Page</span>
+        <span class="card-title">Badrinath from Delhi Tour Package</span>
+        <span class="card-meta">bizarexpedition.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.bizarexpedition.com/speciality-tours/badrinath-yatra-tour-packages" target="_blank" rel="noopener">
+        <span class="card-cat">Specialty Page</span>
+        <span class="card-title">Badrinath Yatra Tour Packages</span>
+        <span class="card-meta">bizarexpedition.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.bizarexpedition.com/india/ladakh-tour-packages" target="_blank" rel="noopener">
+        <span class="card-cat">Destination Page</span>
+        <span class="card-title">Ladakh Tour Packages</span>
+        <span class="card-meta">bizarexpedition.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.bizarexpedition.com/package/leh-nubra-pangong-tour-package" target="_blank" rel="noopener">
+        <span class="card-cat">Package Page</span>
+        <span class="card-title">Leh–Nubra–Pangong Tour Package</span>
+        <span class="card-meta">bizarexpedition.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.bizarexpedition.com/package/srinagar-kargil-leh-road-trip-tour-package" target="_blank" rel="noopener">
+        <span class="card-cat">Road Trip Package</span>
+        <span class="card-title">Srinagar–Kargil–Leh Road Trip Tour Package</span>
+        <span class="card-meta">bizarexpedition.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.bizarexpedition.com/package/hanle-pangong-tso-moriri-stargazing-tour-package" target="_blank" rel="noopener">
+        <span class="card-cat">Niche Package</span>
+        <span class="card-title">Hanle–Pangong–Tso Moriri Stargazing Tour Package</span>
+        <span class="card-meta">bizarexpedition.com</span>
+      </a>
+
+      <a class="card cat-travel reveal" href="https://www.bizarexpedition.com/package/turtuk-ladakh-family-tour-package" target="_blank" rel="noopener">
+        <span class="card-cat">Family Package</span>
+        <span class="card-title">Turtuk Ladakh Family Tour Package</span>
+        <span class="card-meta">bizarexpedition.com</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── HEALTH ── -->
+  <section id="health">
+    <div class="section-head reveal">
+      <h2>Health &amp; Wellness</h2>
+      <span class="section-tag">SHR Cardiology · Lucknow</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <a class="card cat-health reveal" href="https://www.shrclko.com/understanding-high-blood-pressure-causes-symptoms-how-to-prevent-it-naturally/87" target="_blank" rel="noopener">
+        <span class="card-cat">Medical Content</span>
+        <span class="card-title">Understanding High Blood Pressure — Causes, Symptoms &amp; Natural Prevention</span>
+        <span class="card-meta">shrclko.com</span>
+      </a>
+
+      <a class="card cat-health reveal" href="https://www.shrclko.com/cholesterol-explained-good-vs-bad-cholesterol-and-how-to-keep-your-heart-healthy/88" target="_blank" rel="noopener">
+        <span class="card-cat">Medical Content</span>
+        <span class="card-title">Cholesterol Explained: Good vs Bad &amp; How to Keep Your Heart Healthy</span>
+        <span class="card-meta">shrclko.com</span>
+      </a>
+
+      <a class="card cat-health reveal" href="https://www.shrclko.com/preventive-health-checkups-why-regular-screening-can-save-your-life/85" target="_blank" rel="noopener">
+        <span class="card-cat">Preventive Care</span>
+        <span class="card-title">Preventive Health Checkups: Why Regular Screening Can Save Your Life</span>
+        <span class="card-meta">shrclko.com</span>
+      </a>
+
+      <a class="card cat-health reveal" href="https://www.shrclko.com/modern-heart-treatment-options-available-in-multi-specialty-hospitals/82" target="_blank" rel="noopener">
+        <span class="card-cat">Hospital Content</span>
+        <span class="card-title">Modern Heart Treatment Options in Multi-Specialty Hospitals</span>
+        <span class="card-meta">shrclko.com</span>
+      </a>
+
+      <a class="card cat-health reveal" href="https://www.shrclko.com/best-foods-and-worst-foods-for-heart-patients-and-prevention/83" target="_blank" rel="noopener">
+        <span class="card-cat">Nutrition Guide</span>
+        <span class="card-title">Best &amp; Worst Foods for Heart Patients and Prevention</span>
+        <span class="card-meta">shrclko.com</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── DIGITAL MARKETING ── -->
+  <section id="digital">
+    <div class="section-head reveal">
+      <h2>Digital Marketing</h2>
+      <span class="section-tag">ZooPup UK</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <a class="card cat-digital reveal" href="https://zoopup.co.uk/blog/using-ai-to-personalize-whatsapp-messages-at-scale" target="_blank" rel="noopener">
+        <span class="card-cat">AI Marketing</span>
+        <span class="card-title">Using AI to Personalise WhatsApp Messages at Scale</span>
+        <span class="card-meta">zoopup.co.uk</span>
+      </a>
+
+      <a class="card cat-digital reveal" href="https://zoopup.co.uk/blog/uk-digital-marketing-changes-2026-what-businesses-need-to-do" target="_blank" rel="noopener">
+        <span class="card-cat">Trend Article</span>
+        <span class="card-title">UK Digital Marketing Changes 2026 — What Businesses Need to Do</span>
+        <span class="card-meta">zoopup.co.uk</span>
+      </a>
+
+      <a class="card cat-digital reveal" href="https://zoopup.co.uk/blog/smart-reputation-management-essential-uk-hospitals" target="_blank" rel="noopener">
+        <span class="card-cat">Healthcare Marketing</span>
+        <span class="card-title">Smart Reputation Management — Essential for UK Hospitals</span>
+        <span class="card-meta">zoopup.co.uk</span>
+      </a>
+
+      <a class="card cat-digital reveal" href="https://zoopup.co.uk/blog/high-intent-property-leads-hyper-targeted-dm-real-estate" target="_blank" rel="noopener">
+        <span class="card-cat">Real Estate Marketing</span>
+        <span class="card-title">High-Intent Property Leads via Hyper-Targeted DM for Real Estate</span>
+        <span class="card-meta">zoopup.co.uk</span>
+      </a>
+
+      <a class="card cat-digital reveal" href="https://zoopup.co.uk/blog/boosting-customer-engagement-personalized-whatsapp-automation-uk-businesses" target="_blank" rel="noopener">
+        <span class="card-cat">WhatsApp Strategy</span>
+        <span class="card-title">Boosting Customer Engagement via Personalized WhatsApp Automation</span>
+        <span class="card-meta">zoopup.co.uk</span>
+      </a>
+
+      <a class="card cat-digital reveal" href="https://zoopup.co.uk/blog/ai-powered-content-strategies-transforming-brand-visibility-2025" target="_blank" rel="noopener">
+        <span class="card-cat">AI Strategy</span>
+        <span class="card-title">AI-Powered Content Strategies Transforming Brand Visibility in 2025</span>
+        <span class="card-meta">zoopup.co.uk</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ── FINTECH / REWARDSPAY ── -->
+  <section id="fintech">
+    <div class="section-head reveal">
+      <h2>Fintech &amp; Brand Content</h2>
+      <span class="section-tag">RewardsPay Services</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+      <a class="card cat-fintech reveal" href="https://docs.google.com/document/d/1gLRM9BvtorV16T3irVXaPsOnGGSLpfxePU3SefMAziY/edit?usp=sharing" target="_blank" rel="noopener">
+        <span class="card-cat">Google Doc · Fintech</span>
+        <span class="card-title">RewardsPay Brand Content — Sample 1</span>
+        <span class="card-meta">View on Google Docs</span>
+      </a>
+      <a class="card cat-fintech reveal" href="https://docs.google.com/document/d/16mwQVGL85SCB-SIzjV-HCty81jh7QWAj2jCsQXr3OXE/edit?usp=sharing" target="_blank" rel="noopener">
+        <span class="card-cat">Google Doc · Fintech</span>
+        <span class="card-title">RewardsPay Brand Content — Sample 2</span>
+        <span class="card-meta">View on Google Docs</span>
+      </a>
+      <a class="card cat-fintech reveal" href="https://docs.google.com/document/d/1TTGeAhuY8ABDVZgnEYOULjM8vedcenvs/edit?usp=drive_link" target="_blank" rel="noopener">
+        <span class="card-cat">Google Doc · Fintech</span>
+        <span class="card-title">RewardsPay Piece — Sample 3</span>
+        <span class="card-meta">View on Google Docs</span>
+      </a>
+      <a class="card cat-fintech reveal" href="https://docs.google.com/document/d/1RrLEnmunpgyJLNq2XYo0RdQKsCu19Uoc/edit?usp=drive_link" target="_blank" rel="noopener">
+        <span class="card-cat">Google Doc · Fintech</span>
+        <span class="card-title">RewardsPay Piece — Sample 4</span>
+        <span class="card-meta">View on Google Docs</span>
+      </a>
+      <a class="card cat-fintech reveal" href="https://docs.google.com/document/d/1Jgpcxu_eFrllOcvVvY-u9x75FVlHHGwv/edit?usp=drive_link" target="_blank" rel="noopener">
+        <span class="card-cat">Google Doc · Fintech</span>
+        <span class="card-title">RewardsPay Piece — Sample 5</span>
+        <span class="card-meta">View on Google Docs</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── WEB CONTENT ── -->
+  <section id="web">
+    <div class="section-head reveal">
+      <h2>Website &amp; Nursing Content</h2>
+      <span class="section-tag">BSM Nursing College</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="card-grid">
+
+      <a class="card cat-web reveal" href="https://www.bsmnursing.com/gnm-and-bsc-nursing-admission-2026-2027" target="_blank" rel="noopener">
+        <span class="card-cat">Website Copy</span>
+        <span class="card-title">GNM and BSc Nursing Admission 2026–2027</span>
+        <span class="card-meta">bsmnursing.com</span>
+      </a>
+
+      <a class="card cat-web reveal" href="https://www.bsmnursing.com/bsc-nursing-and-gnm-admission-2026-2027" target="_blank" rel="noopener">
+        <span class="card-cat">Website Copy</span>
+        <span class="card-title">BSc Nursing and GNM Admission 2026–2027</span>
+        <span class="card-meta">bsmnursing.com</span>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 Nimisha Singh · Content Writer · <a href="mailto:worknimisha9@gmail.com">worknimisha9@gmail.com</a></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Stagger children inside grids
+  document.querySelectorAll('.card-grid, .featured-grid').forEach(grid => {
+    grid.querySelectorAll('.card, .card-big').forEach((card, i) => {
+      card.style.transitionDelay = (i * 55) + 'ms';
+    });
+  });
+</script>
+</body>
+</html>
